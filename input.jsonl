@@ -1,0 +1,4 @@
+{"source": "I am a boy.", "hypothesis": "Soy chico.", "reference": "Soy un chico."}
+{"source": "I am a boy", "hypothesis": "Soy un chico", "reference": "Soy un chico"}
+{"source": "I am a boy", "hypothesis": "Soy un chico", "reference": "Soy un chico"}
+{"source": "I am a boy.", "hypothesis": "Soy chico.", "reference": "Soy un chico."}
