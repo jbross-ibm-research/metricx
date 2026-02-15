@@ -1,0 +1,45 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[build-system]
+requires = ["setuptools>=45,<81", "wheel", "pip"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metricx"
+version = "0.1.0"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+description = "MetricX models for automatic evaluation of translations"
+requires-python = ">=3.10"
+dependencies = [
+    "protobuf",  # Required by sentencepiece but not automatically installed
+    "transformers[torch]>=4.30.2",
+    "sentencepiece>=0.1.99",
+    "datasets>=2.13.1"
+]
+
+[project.optional-dependencies]
+eval = [
+    "pip>=21.0",  # Required by apache-beam (dependency of mt-metrics-eval)
+    "apache-beam>=2.57.0",  # Required for Python 3.12 support (see https://github.com/apache/beam/issues/29149)
+    "mt-metrics-eval @ git+https://github.com/google-research/mt-metrics-eval",
+]
+
+[tool.setuptools]
+packages = ["metricx23", "metricx24"]
+
+[tool.uv]
+override-dependencies = [
+    # Required for Python 3.12 support (see above)
+    "apache-beam>=2.57.0",
+]
